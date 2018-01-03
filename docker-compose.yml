@@ -1,0 +1,5 @@
+version: "3"
+services:
+  release:
+    build: release
+    entrypoint: sh entrypoint.sh -f
