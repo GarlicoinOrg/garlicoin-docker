@@ -17,7 +17,13 @@ For a development build you need to generate the compose file and dockerfile usi
 then you should be able to pull up the docker container using the following command
 
 ```bash
-docker-compose -f dev-compose.yml up --build
+./garlicoin.sh -s dev
+```
+
+Use the -f flag to force a build regardless like so
+
+```bash
+./garlicoin.sh -f -s dev
 ```
 
 the entrypoint script detects if it's been built before
@@ -25,13 +31,19 @@ the entrypoint script detects if it's been built before
 you then should be able to connect to the container using the connect script
 
 ```bash
-./connect.sh -d
+./garlicoin.sh -c dev
 ```
 
 ## Release
 
-Release builds are simpler than the development build because it pulls from the HEAD of the garlicoin repo and automatically builds, even the compose command is simpler
+Release builds are simpler than the development build because it pulls from the HEAD of the garlicoin repo and automatically builds
 
 ```bash
-docker-compose up --build
+./garlicoin.sh -s release
+```
+
+then connect as usual
+
+```bash
+./garlicoin.sh -c release
 ```

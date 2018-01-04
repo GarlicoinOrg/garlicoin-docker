@@ -9,11 +9,11 @@ while getopts "f" opt; do
     esac
 done
 
-if [ ! -f $GARLICOIND ] || [ $FORCE -eq 1 ]; then
-    cd /garlicoin                       \
-        && ./autogen.sh                 \
-        && ./configure --disable-wallet \
-        && make                         \
+if [ ! -f $GARLICOIND ] || [ $FORCE -eq 1 ] || [ $FORCE_BUILD -eq 1 ]; then
+    cd /garlicoin                    \
+        && ./autogen.sh              \
+        && ./configure --without-gui \
+        && make                      \
         && make install
 fi
 
